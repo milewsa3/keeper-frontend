@@ -4,7 +4,7 @@ import * as api from '../../api'
 const initialState = {
   authData: null,
   loading: false,
-  error: undefined
+  error: null
 };
 
 export const authSlice = createSlice({
@@ -25,7 +25,7 @@ export const authSlice = createSlice({
     clearAuth: (state) => {
       state.authData = null
       state.loading = false
-      state.error = undefined
+      state.error = null
     }
   },
 })
@@ -60,6 +60,13 @@ export const signup = (formData, navigate) => async dispatch => {
   catch (error) {
     dispatch(setError(error.response.data.error))
   }
+}
+
+export const logout = (navigate, setUser) => async dispatch => {
+  localStorage.clear()
+  dispatch(clearAuth())
+  navigate('/login')
+  setUser(null)
 }
 
 // The function below is called a selector and allows us to select a value from

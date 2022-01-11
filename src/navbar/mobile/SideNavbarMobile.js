@@ -3,7 +3,7 @@ import ThemeSwitcherMobile from "./ThemeSwitcherMobile";
 import LogoutMobile from "./LogoutMobile";
 import { Box } from "@mui/material";
 
-const SideNavbarMobile = ({ user, handleDrawerClose, ...props }) => {
+const SideNavbarMobile = ({ user, setUser, handleDrawerClose, ...props }) => {
   return (
     <Box
       sx={{ width: "220px" }}
@@ -13,7 +13,7 @@ const SideNavbarMobile = ({ user, handleDrawerClose, ...props }) => {
       <ThemeSwitcherMobile/>
       {user && (
         <>
-          <LogoutMobile/>
+          <LogoutMobile setUser={setUser}/>
         </>
       )}
     </Box>

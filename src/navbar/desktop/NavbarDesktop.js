@@ -1,23 +1,33 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
+import { logout } from '../../redux/auth/authSlice';
+import { useDispatch } from 'react-redux';
 
-const NavbarDesktop = ({ user, ...props }) => {
+const NavbarDesktop = ({ user, setUser, ...props }) => {
   const theme = useTheme();
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+
+  const onLogoutClick = () => {
+    dispatch(logout(navigate, setUser))
+  }
 
   const styles = {
     root: {
       display: "flex",
       alignItems: "center",
-      gap: theme.spacing(3),
+      gap: theme.spacing(5),
     },
   };
-  const navigate = useNavigate();
+
+  console.log(user)
 
   return (
     <Box sx={styles.root}>
+      {user && <Typography variant={"h6"}>Hello, <b>{user.data.result.name}</b></Typography>}
       <ThemeSwitcher/>
       {user && (
         <>
@@ -25,8 +35,8 @@ const NavbarDesktop = ({ user, ...props }) => {
             size="small"
             variant="contained"
             color="secondary"
-            onClick={() => console.log('logout')}
-            sx={{ mr: 3, ml: 5 }}
+            onClick={onLogoutClick}
+            sx={{ mr: 3, ml: 3 }}
           >
             {"Logout"}
           </Button>
