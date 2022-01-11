@@ -1,10 +1,17 @@
-import { Box } from '@mui/material';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './navbar/Navbar';
+import Login from './auth/Login';
+import Dashboard from './keeper/Dashboard';
 
 function App() {
   return (
-    <Box>
-      Hello Material-UI
-    </Box>
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Dashboard/>}/>
+        <Route path="/login" element={<Login/>}/>
+      </Routes>
+    </Router>
   );
 }
 
