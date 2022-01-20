@@ -4,6 +4,7 @@ import { Box, Button, Divider, Grid, Paper, Typography } from "@mui/material";
 import AuthInput from "./AuthInput";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearAuth, selectAuth, signin, signup } from '../redux/auth/authSlice';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 const initialState = {
   name: "",
@@ -121,6 +122,8 @@ const LoginForm = () => {
           />
           {isSignup && (
             <>
+              <PasswordStrengthBar password={formData.password}
+                                   style={{ width: '100%', marginTop: '10px' }}/>
               <AuthInput
                 name="confirmPassword"
                 label={"Confirm password"}
@@ -139,6 +142,8 @@ const LoginForm = () => {
                 type="password"
                 autoComplete={"password"}
               />
+              <PasswordStrengthBar password={formData.masterPassword}
+                                   style={{ width: '100%', marginTop: '10px' }}/>
             </>
           )}
         </Grid>

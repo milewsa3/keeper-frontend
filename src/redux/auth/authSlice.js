@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import * as api from '../../api'
+import validateFormData from '../../auth/AuthUtils';
 
 const initialState = {
   authData: null,
@@ -59,11 +60,16 @@ export const signup = (formData, navigate) => async dispatch => {
   // Latency for security purposes
   setTimeout(async () => {
     try {
-      const { data } = await api.signUp(formData)
-      dispatch(fillAuthData(data))
-      localStorage.setItem('profile', JSON.stringify({ data }))
+      const error = validateFormData(formData)
+      if (error) {
+        dispatch(setError(error))
+      } else {
+        const { data } = await api.signUp(formData)
+        dispatch(fillAuthData(data))
+        localStorage.setItem('profile', JSON.stringify({ data }))
 
-      navigate('/')
+        navigate('/')
+      }
     }
     catch (error) {
       dispatch(setError(error.response.data.error))
