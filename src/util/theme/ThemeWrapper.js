@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ColorModeContext from "./ColorModeContext";
 import { deepPurple, pink } from "@mui/material/colors";
-import { useMediaQuery } from "@mui/material";
 
 const getDesignTokens = (mode) => ({
   palette: {
@@ -18,8 +17,7 @@ const getDesignTokens = (mode) => ({
 });
 
 const ThemeWrapper = (props) => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [mode, setMode] = React.useState(prefersDarkMode ? "dark" : "light");
+  const [mode, setMode] = React.useState("light");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
