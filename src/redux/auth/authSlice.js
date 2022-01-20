@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import * as api from '../../api'
-import validateFormData from '../../auth/AuthUtils';
+import { loginLockedTime, validateFormData } from '../../auth/AuthUtils';
 
 const initialState = {
   authData: null,
+  failedLoginAttempts: 0,
+  loginLocked: false,
   loading: false,
   error: null
 };
@@ -14,6 +16,18 @@ export const authSlice = createSlice({
   reducers: {
     initRequest: (state) => {
       state.loading = true
+    },
+    increaseLoginAttempts: (state) => {
+      state.failedLoginAttempts = state.failedLoginAttempts + 1
+    },
+    resetLoginAttempts: (state, action) => {
+      state.failedLoginAttempts = 0
+    },
+    setLoginLocked: (state) => {
+      state.loginLocked = true
+    },
+    setLoginUnlocked: (state) => {
+      state.loginLocked = false
     },
     fillAuthData: (state, action) => {
       state.authData = action.payload
@@ -32,7 +46,16 @@ export const authSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { fillAuthData, initRequest, setError, clearAuth } = authSlice.actions
+export const {
+  initRequest,
+  increaseLoginAttempts,
+  resetLoginAttempts,
+  setLoginLocked,
+  setLoginUnlocked,
+  fillAuthData,
+  setError,
+  clearAuth
+} = authSlice.actions
 
 export const signin = (formData, navigate) => async dispatch => {
   dispatch(initRequest())
@@ -47,6 +70,7 @@ export const signin = (formData, navigate) => async dispatch => {
       navigate('/')
     }
     catch (error) {
+      dispatch(increaseLoginAttempts())
       dispatch(setError(error.response.data.error))
     }
   }, [1000])
@@ -82,6 +106,15 @@ export const logout = (navigate, setUser) => async dispatch => {
   dispatch(clearAuth())
   navigate('/login')
   setUser(null)
+}
+
+export const loginAttemptsExceeded = () => async dispatch => {
+  dispatch(setLoginLocked())
+
+  setTimeout(() => {
+    dispatch(resetLoginAttempts())
+    dispatch(setLoginUnlocked())
+  }, loginLockedTime)
 }
 
 // The function below is called a selector and allows us to select a value from

@@ -5,6 +5,7 @@ import AuthInput from "./AuthInput";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearAuth, selectAuth, signin, signup } from '../redux/auth/authSlice';
 import PasswordStrengthBar from 'react-password-strength-bar';
+import LoginAttemptsSnackbar from './LoginAttemptsSnackbar';
 
 const initialState = {
   name: "",
@@ -153,7 +154,7 @@ const LoginForm = () => {
           variant="contained"
           color="primary"
           sx={styles.submitButton}
-          disabled={authData.loading}
+          disabled={authData.loading || authData.loginLocked}
         >
           {isSignup ? "Sign up" : "Sign in"}
         </Button>
@@ -164,6 +165,7 @@ const LoginForm = () => {
           </Button>
         </Box>
       </form>
+      <LoginAttemptsSnackbar/>
     </Paper>
   );
 };

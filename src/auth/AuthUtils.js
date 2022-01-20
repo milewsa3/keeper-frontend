@@ -15,12 +15,9 @@ const createPasswordSchema = () => {
   return schema
 }
 
-const validateFormData = (formData) => {
+export const validateFormData = (formData) => {
   let error = { name: '', email: '', password: '', confirmPassword: '', masterPassword: '' }
   const passwordSchema = createPasswordSchema()
-
-  console.log(formData)
-  console.log(passwordSchema.validate(formData.password))
 
   if (!passwordSchema.validate(formData.password)) {
     error.password = 'Password must be at least 8 character long, have 1 lowercase, 1 uppercase, 1 number and 1 symbol'
@@ -33,4 +30,5 @@ const validateFormData = (formData) => {
   }
 }
 
-export default validateFormData
+export const maxLoginAttempts = 3
+export const loginLockedTime = 10000 // ms
