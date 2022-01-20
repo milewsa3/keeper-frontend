@@ -4,7 +4,7 @@ import { Box, useMediaQuery } from "@mui/material";
 import LoginAd from "./LoginAd";
 import { useTheme } from "@emotion/react";
 import { useNavigate } from 'react-router-dom';
-import { getUser } from '../util/user/UserUtils';
+import { getUser } from './user/UserUtils';
 
 const Login = () => {
   const theme = useTheme();

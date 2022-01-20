@@ -3,7 +3,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import ColorModeContext from "../../util/theme/ColorModeContext";
+import ColorModeContext from "../../theme/ColorModeContext";
 import { useTheme } from "@emotion/react";
 
 const ThemeSwitcher = ({ ...props }) => {

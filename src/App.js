@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './navbar/Navbar';
-import Login from './auth/Login';
+import Navbar from './app/navbar/Navbar';
+import Login from './app/auth/Login';
 import Dashboard from './keeper/Dashboard';
-import ProtectedRoutes from './util/wrapper/ProtectedRoutes';
+import ProtectedRoutes from './app/auth/ProtectedRoutes';
 import NotFound from './keeper/error/NotFound';
 
 function App() {

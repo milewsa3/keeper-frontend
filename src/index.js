@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import ThemeWrapper from './util/theme/ThemeWrapper';
+import ThemeWrapper from './app/theme/ThemeWrapper';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { store } from './app/redux/store';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -6,7 +6,7 @@ import { useTheme } from "@emotion/react";
 import LockIcon from '@mui/icons-material/Lock';
 import NavbarMobile from "./mobile/NavbarMobile";
 import NavbarDesktop from "./desktop/NavbarDesktop";
-import { getUser } from '../util/user/UserUtils';
+import { getUser } from '../auth/user/UserUtils';
 import decode from 'jwt-decode'
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/auth/authSlice';

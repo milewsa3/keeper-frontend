@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { getUser } from '../user/UserUtils';
+import { getUser } from './user/UserUtils';
 
 const ProtectedRoutes = () => {
   const user = getUser()
