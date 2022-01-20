@@ -10,6 +10,7 @@ const initialState = {
   email: "",
   password: "",
   confirmPassword: "",
+  masterPassword: "",
 };
 
 const LoginForm = () => {
@@ -119,15 +120,26 @@ const LoginForm = () => {
             handleShowPassword={handleShowPassword}
           />
           {isSignup && (
-            <AuthInput
-              name="confirmPassword"
-              label={"Confirm password"}
-              handleChange={handleChange}
-              error={Boolean(error?.confirmPassword)}
-              helperText={error?.confirmPassword}
-              type="password"
-              autoComplete={"password"}
-            />
+            <>
+              <AuthInput
+                name="confirmPassword"
+                label={"Confirm password"}
+                handleChange={handleChange}
+                error={Boolean(error?.confirmPassword)}
+                helperText={error?.confirmPassword}
+                type="password"
+                autoComplete={"password"}
+              />
+              <AuthInput
+                name="masterPassword"
+                label={"Master password"}
+                handleChange={handleChange}
+                error={Boolean(error?.masterPassword)}
+                helperText={error?.masterPassword}
+                type="password"
+                autoComplete={"password"}
+              />
+            </>
           )}
         </Grid>
         <Button
@@ -136,6 +148,7 @@ const LoginForm = () => {
           variant="contained"
           color="primary"
           sx={styles.submitButton}
+          disabled={authData.loading}
         >
           {isSignup ? "Sign up" : "Sign in"}
         </Button>

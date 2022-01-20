@@ -36,30 +36,39 @@ export const { fillAuthData, initRequest, setError, clearAuth } = authSlice.acti
 export const signin = (formData, navigate) => async dispatch => {
   dispatch(initRequest())
 
-  try {
-    const { data } = await api.signIn(formData)
-    dispatch(fillAuthData(data))
-    localStorage.setItem('profile', JSON.stringify({ data }))
+  // Latency for security purposes
+  setTimeout(async () => {
+    try {
+      const { data } = await api.signIn(formData)
+      dispatch(fillAuthData(data))
+      localStorage.setItem('profile', JSON.stringify({ data }))
 
-    navigate('/')
-  }
-  catch (error) {
-    dispatch(setError(error.response.data.error))
-  }
+      navigate('/')
+    }
+    catch (error) {
+      dispatch(setError(error.response.data.error))
+    }
+  }, [1000])
+
+
 }
 
 export const signup = (formData, navigate) => async dispatch => {
   dispatch(initRequest())
 
-  try {
-    const { data } = await api.signUp(formData)
-    dispatch(fillAuthData(data))
+  // Latency for security purposes
+  setTimeout(async () => {
+    try {
+      const { data } = await api.signUp(formData)
+      dispatch(fillAuthData(data))
+      localStorage.setItem('profile', JSON.stringify({ data }))
 
-    navigate('/')
-  }
-  catch (error) {
-    dispatch(setError(error.response.data.error))
-  }
+      navigate('/')
+    }
+    catch (error) {
+      dispatch(setError(error.response.data.error))
+    }
+  }, [1000])
 }
 
 export const logout = (navigate, setUser) => async dispatch => {

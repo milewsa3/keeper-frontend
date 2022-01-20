@@ -23,8 +23,6 @@ const NavbarDesktop = ({ user, setUser, ...props }) => {
     },
   };
 
-  console.log(user)
-
   return (
     <Box sx={styles.root}>
       {user && <Typography variant={"h6"}>Hello, <b>{user.data.result.name}</b></Typography>}
