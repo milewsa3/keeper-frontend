@@ -34,7 +34,7 @@ const LoginAttemptsSnackbar = () => {
   return (
     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
       <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
-        You have {maxLoginAttempts - loginAttempts} login attempts
+        You have <b>{maxLoginAttempts - loginAttempts}</b> login attempts
         {loginAttempts === maxLoginAttempts && '. Wait for a while until again you can try to log in'}
       </Alert>
     </Snackbar>
