@@ -1,10 +1,14 @@
 import React from 'react';
+import PasswordsGrid from './PasswordsGrid';
+import { Container } from '@mui/material';
+import AddPassword from './AddPassword';
 
 const Dashboard = () => {
   return (
-    <div>
-      Home
-    </div>
+    <Container sx={{ my: 8 }}>
+      <AddPassword/>
+      <PasswordsGrid/>
+    </Container>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import ColorModeContext from "./ColorModeContext";
-import { deepPurple, pink } from "@mui/material/colors";
+import { deepPurple, red } from "@mui/material/colors";
 
 const getDesignTokens = (mode) => ({
   palette: {
@@ -9,9 +9,9 @@ const getDesignTokens = (mode) => ({
     ...(mode === "light"
       ? {
         primary: deepPurple,
-        secondary: pink,
+        secondary: red,
       }
-      : { primary: deepPurple }),
+      : {}),
   },
   spacing: 3,
 });
