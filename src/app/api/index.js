@@ -3,8 +3,9 @@ import axios from 'axios'
 const API = axios.create({ baseURL: `${process.env.REACT_APP_BACKEND_URI}` })
 
 API.interceptors.request.use((req) => {
-  if (localStorage.getItem('profile')) {
-    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).data.token}`;
+  const authData = JSON.parse(sessionStorage.getItem('state')).auth.authData
+  if (authData) {
+    req.headers.Authorization = `Bearer ${authData.token}`;
   }
 
   return req;
