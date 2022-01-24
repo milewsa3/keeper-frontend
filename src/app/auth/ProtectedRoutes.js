@@ -1,9 +1,10 @@
 import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { getUser } from './user/UserUtils';
+import { useSelector } from 'react-redux';
+import { selectAuthData } from '../redux/auth/authSlice';
 
 const ProtectedRoutes = () => {
-  const user = getUser()
+  const user = useSelector(selectAuthData)
   const location = useLocation()
 
   return user ? <Outlet/> : <Navigate to="/login" state={{ from: location }}/>

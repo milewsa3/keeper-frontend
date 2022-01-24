@@ -2,8 +2,12 @@ import React from "react";
 import ThemeSwitcherMobile from "./ThemeSwitcherMobile";
 import LogoutMobile from "./LogoutMobile";
 import { Box } from "@mui/material";
+import { useSelector } from 'react-redux';
+import { selectAuthData } from '../../redux/auth/authSlice';
 
-const SideNavbarMobile = ({ user, setUser, handleDrawerClose, ...props }) => {
+const SideNavbarMobile = ({ handleDrawerClose, ...props }) => {
+  const user = useSelector(selectAuthData)
+
   return (
     <Box
       sx={{ width: "220px" }}
@@ -13,7 +17,7 @@ const SideNavbarMobile = ({ user, setUser, handleDrawerClose, ...props }) => {
       <ThemeSwitcherMobile/>
       {user && (
         <>
-          <LogoutMobile setUser={setUser}/>
+          <LogoutMobile />
         </>
       )}
     </Box>

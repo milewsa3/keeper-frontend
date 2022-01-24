@@ -3,16 +3,17 @@ import { Box, Button, Typography } from "@mui/material";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
-import { logout } from '../../redux/auth/authSlice';
-import { useDispatch } from 'react-redux';
+import { logout, selectAuthData } from '../../redux/auth/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const NavbarDesktop = ({ user, setUser, ...props }) => {
+const NavbarDesktop = () => {
   const theme = useTheme();
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  const user = useSelector(selectAuthData)
 
   const onLogoutClick = () => {
-    dispatch(logout(navigate, setUser))
+    dispatch(logout(navigate))
   }
 
   const styles = {
@@ -25,7 +26,7 @@ const NavbarDesktop = ({ user, setUser, ...props }) => {
 
   return (
     <Box sx={styles.root}>
-      {user && <Typography variant={"h6"}>Hello, <b>{user.data.result.name}</b></Typography>}
+      {user && <Typography variant={"h6"}>Hello, <b>{user.result.name}</b></Typography>}
       <ThemeSwitcher/>
       {user && (
         <>

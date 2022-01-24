@@ -19,8 +19,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
-  const authData = useSelector(selectAuth)
-  const error = authData.error
+  const auth = useSelector(selectAuth)
+  const error = auth.error
 
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
@@ -154,7 +154,7 @@ const LoginForm = () => {
           variant="contained"
           color="primary"
           sx={styles.submitButton}
-          disabled={authData.loading || authData.loginLocked}
+          disabled={auth.loading || auth.loginLocked}
         >
           {isSignup ? "Sign up" : "Sign in"}
         </Button>

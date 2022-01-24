@@ -3,7 +3,7 @@ import { Drawer, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SideNavbarMobile from "./SideNavbarMobile";
 
-const NavbarMobile = ({ user, setUser, ...props }) => {
+const NavbarMobile = () => {
   const [menuOpened, setMenuOpened] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -28,7 +28,7 @@ const NavbarMobile = ({ user, setUser, ...props }) => {
         open={menuOpened}
         onClose={() => handleDrawerClose()}
       >
-        <SideNavbarMobile user={user} setUser={setUser} handleDrawerClose={handleDrawerClose}/>
+        <SideNavbarMobile handleDrawerClose={handleDrawerClose}/>
       </Drawer>
     </div>
   );

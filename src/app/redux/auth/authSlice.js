@@ -65,7 +65,6 @@ export const signin = (formData, navigate) => async dispatch => {
     try {
       const { data } = await api.signIn(formData)
       dispatch(fillAuthData(data))
-      localStorage.setItem('profile', JSON.stringify({ data }))
 
       navigate('/')
     }
@@ -90,7 +89,6 @@ export const signup = (formData, navigate) => async dispatch => {
       } else {
         const { data } = await api.signUp(formData)
         dispatch(fillAuthData(data))
-        localStorage.setItem('profile', JSON.stringify({ data }))
 
         navigate('/')
       }
@@ -101,11 +99,9 @@ export const signup = (formData, navigate) => async dispatch => {
   }, [1000])
 }
 
-export const logout = (navigate, setUser) => async dispatch => {
-  localStorage.clear()
+export const logout = (navigate) => async dispatch => {
   dispatch(clearAuth())
   navigate('/login')
-  setUser(null)
 }
 
 export const loginAttemptsExceeded = () => async dispatch => {
@@ -121,5 +117,6 @@ export const loginAttemptsExceeded = () => async dispatch => {
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectAuth = state => state.auth;
+export const selectAuthData = state => state.auth.authData;
 
 export default authSlice.reducer

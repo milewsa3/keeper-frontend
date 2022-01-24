@@ -4,11 +4,12 @@ import { Box, useMediaQuery } from "@mui/material";
 import LoginAd from "./LoginAd";
 import { useTheme } from "@emotion/react";
 import { useNavigate } from 'react-router-dom';
-import { getUser } from './user/UserUtils';
+import { useSelector } from 'react-redux';
+import { selectAuthData } from '../redux/auth/authSlice';
 
 const Login = () => {
   const theme = useTheme();
-  const user = getUser()
+  const user = useSelector(selectAuthData)
   const navigate = useNavigate()
   const matchesDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
