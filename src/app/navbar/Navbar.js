@@ -53,9 +53,9 @@ export default function Navbar() {
           </NavLink>
         </Typography>
         {isMobileMenu ? (
-          <NavbarMobile />
+          <NavbarMobile/>
         ) : (
-          <NavbarDesktop />
+          <NavbarDesktop/>
         )}
       </Toolbar>
     </AppBar>

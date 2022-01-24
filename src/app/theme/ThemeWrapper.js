@@ -1,44 +1,14 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import ColorModeContext from "./ColorModeContext";
-import { deepPurple, red } from "@mui/material/colors";
-
-const getDesignTokens = (mode) => ({
-  palette: {
-    mode,
-    ...(mode === "light"
-      ? {
-        primary: deepPurple,
-        secondary: red,
-      }
-      : {}),
-  },
-  spacing: 3,
-});
+import { useSelector } from 'react-redux';
+import { adjustBackgroundColor, selectTheme } from '../redux/theme/themeSlice';
 
 const ThemeWrapper = (props) => {
-  const [mode, setMode] = React.useState("light");
-  const colorMode = React.useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-        if (document.body.style.backgroundColor === "rgb(18, 18, 18)") {
-          document.body.style.backgroundColor = "rgb(255, 255, 255)";
-        } else {
-          document.body.style.backgroundColor = "rgb(18, 18, 18)";
-        }
-      },
-    }),
-    []
-  );
+  const theme = useSelector(selectTheme)
 
-  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  adjustBackgroundColor(theme.palette.mode)
 
-  return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-    </ColorModeContext.Provider>
-  );
+  return <ThemeProvider theme={createTheme(theme)}>{props.children}</ThemeProvider>
 };
 
 export default ThemeWrapper;

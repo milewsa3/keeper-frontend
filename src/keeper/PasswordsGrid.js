@@ -8,8 +8,8 @@ const PasswordsGrid = () => {
 
   useEffect(() => {
     getAllPasswordEntitiesForUser()
-      .then(res => setPasswordEntities(res.data))
-      .catch(err => setPasswordEntities([]))
+    .then(res => setPasswordEntities(res.data))
+    .catch(err => setPasswordEntities([]))
   }, [])
 
   return (

@@ -7,7 +7,8 @@ export const loadSessionState = () => {
     }
 
     return JSON.parse(serializedState);
-  } catch (error) {
+  }
+  catch (error) {
     return undefined;
   }
 };
@@ -16,7 +17,8 @@ export const saveSessionState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     sessionStorage.setItem('state', serializedState);
-  } catch (error) {
+  }
+  catch (error) {
     // Ignore write errors.
   }
 };

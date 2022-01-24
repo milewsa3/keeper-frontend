@@ -3,14 +3,15 @@ import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useTheme } from "@emotion/react";
-import ColorModeContext from "../../theme/ColorModeContext";
+import { useDispatch } from 'react-redux';
+import { toggleColorMode } from '../../redux/theme/themeSlice';
 
 const ThemeSwitcherMobile = () => {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  const dispatch = useDispatch()
 
   return (
-    <ListItemButton divider={true} onClick={colorMode.toggleColorMode}>
+    <ListItemButton divider={true} onClick={() => dispatch(toggleColorMode())}>
       <ListItemIcon>
         {theme.palette.mode === "light" ? <DarkModeIcon/> : <LightModeIcon/>}
       </ListItemIcon>

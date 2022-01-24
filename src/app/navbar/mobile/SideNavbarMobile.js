@@ -17,7 +17,7 @@ const SideNavbarMobile = ({ handleDrawerClose, ...props }) => {
       <ThemeSwitcherMobile/>
       {user && (
         <>
-          <LogoutMobile />
+          <LogoutMobile/>
         </>
       )}
     </Box>
