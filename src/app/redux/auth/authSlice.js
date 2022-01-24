@@ -70,8 +70,6 @@ export const signin = (formData, navigate) => async dispatch => {
     }
     catch (error) {
       dispatch(increaseLoginAttempts())
-      console.log(error)
-      console.log(error.response)
       dispatch(setError(error.response.data.error))
     }
   }, [1000])
