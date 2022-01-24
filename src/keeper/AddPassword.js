@@ -28,10 +28,8 @@ const AddPassword = () => {
   }
 
   useEffect(() => {
-    if (Object.values(error).every(err => err === '')) {
-      setFormData(initialState)
-    }
-  }, [error])
+    setFormData(initialState)
+  }, [passwordEntityData.data])
 
   return (
     <Paper component={"form"} onSubmit={handleSubmit}
