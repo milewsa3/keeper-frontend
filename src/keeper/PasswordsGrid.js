@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Paper } from '@mui/material';
 import PasswordPaper from './PasswordPaper';
-import { getAllPasswordEntitiesForUser } from '../app/api';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchAllPasswordEntities,
+  selectPasswordEntity
+} from '../app/redux/passwordEntity/passwordEntitySlice';
 
 const PasswordsGrid = () => {
-  const [passwordEntities, setPasswordEntities] = useState([])
+  const dispatch = useDispatch()
+  const passwordEntityData = useSelector(selectPasswordEntity)
+  const passwordEntities = passwordEntityData.data
+
 
   useEffect(() => {
-    getAllPasswordEntitiesForUser()
-    .then(res => setPasswordEntities(res.data))
-    .catch(err => setPasswordEntities([]))
-  }, [])
+    dispatch(fetchAllPasswordEntities())
+  }, [dispatch])
 
   return (
     <Paper sx={{

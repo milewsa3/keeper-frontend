@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Paper, TextField, Typography } from '@mui/material';
-import { addPasswordEntityForUser } from '../app/api';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  createPasswordEntity,
+  selectPasswordEntity
+} from '../app/redux/passwordEntity/passwordEntitySlice';
 
 const initialState = {
   pageUrl: '',
@@ -10,7 +14,9 @@ const initialState = {
 
 const AddPassword = () => {
   const [formData, setFormData] = useState(initialState);
-  const [error, setError] = useState(initialState)
+  const dispatch = useDispatch()
+  const passwordEntityData = useSelector(selectPasswordEntity)
+  const error = passwordEntityData.error
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,13 +24,14 @@ const AddPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addPasswordEntityForUser(formData)
-    .then(() => {
-      setFormData(initialState)
-      setError(initialState)
-    })
-    .catch(err => setError(err.response.data.error))
+    dispatch(createPasswordEntity(formData))
   }
+
+  useEffect(() => {
+    if (Object.values(error).every(err => err === '')) {
+      setFormData(initialState)
+    }
+  }, [error])
 
   return (
     <Paper component={"form"} onSubmit={handleSubmit}
