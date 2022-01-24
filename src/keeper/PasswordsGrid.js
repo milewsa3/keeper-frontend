@@ -7,17 +7,9 @@ const PasswordsGrid = () => {
   const [passwordEntities, setPasswordEntities] = useState([])
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const { data } = await getAllPasswordEntitiesForUser()
-        setPasswordEntities(data)
-      }
-      catch (err) {
-        setPasswordEntities([])
-      }
-    }
-
-    fetchData()
+    getAllPasswordEntitiesForUser()
+      .then(res => setPasswordEntities(res.data))
+      .catch(err => setPasswordEntities([]))
   }, [])
 
   return (
