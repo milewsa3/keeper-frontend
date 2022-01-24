@@ -32,21 +32,23 @@ const AddPassword = () => {
   }, [passwordEntityData.data])
 
   return (
-    <Paper component={"form"} onSubmit={handleSubmit}
-           sx={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center', p: 6 }}>
-      <Typography variant={"h5"} color={"text.primary"}>Add password</Typography>
-      <TextField name={"pageUrl"} helperText={error.pageUrl} error={Boolean(error.pageUrl)}
-                 label={"Page URL"} type={"text"} autoComplete="new-password" required
-                 onChange={handleChange} value={formData.pageUrl}/>
-      <TextField name={"password"} helperText={error.password} error={Boolean(error.password)}
-                 label={"Password"} type={"password"} autoComplete="new-password" required
-                 onChange={handleChange} value={formData.password}/>
-      <TextField name={"masterPassword"} helperText={error.masterPassword}
-                 error={Boolean(error.masterPassword)} label={"Master password"} type={"password"}
-                 autoComplete="new-password" required onChange={handleChange}
-                 value={formData.masterPassword}/>
-      <Button variant={"contained"} type={"submit"}>Add</Button>
-    </Paper>
+    <div>
+      <Paper component={"form"} onSubmit={handleSubmit}
+             sx={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center', p: 6 }}>
+        <Typography variant={"h5"} color={"text.primary"}>Add password</Typography>
+        <TextField name={"pageUrl"} helperText={error.pageUrl} error={Boolean(error.pageUrl)}
+                   label={"Page URL"} type={"text"} autoComplete="new-password" required
+                   onChange={handleChange} value={formData.pageUrl}/>
+        <TextField name={"password"} helperText={error.password} error={Boolean(error.password)}
+                   label={"Password"} type={"password"} autoComplete="new-password" required
+                   onChange={handleChange} value={formData.password}/>
+        <TextField name={"masterPassword"} helperText={error.masterPassword}
+                   error={Boolean(error.masterPassword)} label={"Master password"} type={"password"}
+                   autoComplete="new-password" required onChange={handleChange}
+                   value={formData.masterPassword}/>
+        <Button variant={"contained"} type={"submit"} disabled={passwordEntityData.loading}>Add</Button>
+      </Paper>
+    </div>
   );
 };
 
