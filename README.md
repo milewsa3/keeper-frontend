@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+<h1 align="center">
+  Keeper 
+  <br>
+  <img src="https://milewsa3.github.io/keeper-frontend/logo192.png" alt="keeper logo" title="keeper logo" width="192">
+  <br>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center" style="font-size: 1.2rem;">
+<b>Make your passwords safe again.</b>
+<br>
+Store your sensitive data for certain websites with high security provided.</p>
 
-## Available Scripts
+<hr />
 
-In the project directory, you can run:
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://milewsa3.github.io/keeper-frontend)
 
-### `yarn start`
+## The problem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+An ordinary user have multiple accounts on a various websites. 
+That generates so many passwords to remember. Isn't it annoying? Yes, we know that it is.
+That's why I build this app called <b>Keeper</b>. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## This solution
 
-### `yarn test`
+<b>Keeper</b> provides a user-friendly UI for storing passwords for your accounts. 
+Website can be proud of it's <b>high security</b> and <b>robustness</b>. 
+At first, user have to create a new account. 
+Name, email, ordinary password and master password must be provided there.
+After that, you can store any passwords you want using master password. Added passwords are encrypted,
+so you have to enter master password again to decrypt them. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Table of Contents
 
-### `yarn build`
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [Screenshots](#screenshots)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requirements
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/). You should be able to run the following command after the installation procedure below.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    $ node --version
+    v16.13.0
 
-### `yarn eject`
+    $ npm --version
+    8.1.0
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Except node, you have to install [yarn](https://yarnpkg.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    $ npm install --global yarn
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Installation
 
-## Learn More
+    $ git clone https://github.com/milewsa3/keeper-frontend.git
+    $ cd keeper-frontent
+    $ yarn install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Configuration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create new file `.env` in main folder. Adjust configuration for the app.
+You can see example config in `.env.example`.
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    $ yarn start
 
-### Analyzing the Bundle Size
+## Technologies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* [React 17.0.2](https://pl.reactjs.org/)
+* [Material-UI 5.2.3](https://mui.com/)
+* [Redux Toolkit 1.7.1](https://redux-toolkit.js.org/)
+* [Axios 0.24.0](https://github.com/axios/axios)
 
-### Making a Progressive Web App
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Light theme
+![Keeper](documentation/images/light-theme-1.png)
+![Keeper](documentation/images/light-theme-2.png)
+![Keeper](documentation/images/light-theme-4.png)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Dark theme
+![Keeper](documentation/images/dark-theme-1.png)
+![Keeper](documentation/images/dark-theme-2.png)
+![Keeper](documentation/images/dark-theme-4.png)
